@@ -18,8 +18,7 @@ typedef struct {
 future futures[N];
 
 
-void *sqr(void *data)
-{
+void *sqr(void *data) {
     thread_data *td = (thread_data *)data;
     td->result = td->value * td->value;
 
@@ -27,8 +26,7 @@ void *sqr(void *data)
 }
 
 
-int main()
-{
+int main() {
     for (int i = 0; i < N; ++i) {
         futures[i].data.value = i;
         int err = pthread_create(&(futures[i].thread), NULL, sqr, (void *)&futures[i].data);
